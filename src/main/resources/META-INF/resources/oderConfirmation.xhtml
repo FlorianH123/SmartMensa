@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head/>
+
+<h:body>
+    <h:form>
+        <h1>Lieferdaten</h1>
+
+        <h:outputLabel>Raumnummer</h:outputLabel>
+        <p:inputText>
+            <f:validator validatorId="buildingValidator"/>
+        </p:inputText>
+
+        <br/>
+
+        <h:outputLabel>Ihr Name</h:outputLabel>
+        <p:inputText required="true">
+        </p:inputText>
+
+        <br/>
+
+        <p:commandButton value="Bestellen">
+        </p:commandButton>
+
+        <p:commandButton value="Zurueck" immediate="true">
+        </p:commandButton>
+    </h:form>
+</h:body>
+</html>

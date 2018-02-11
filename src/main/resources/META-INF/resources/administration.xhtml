@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head/>
+
+    <h:body>
+        <f:view>
+            <h:form>
+                <p:dataTable var="dish" value="#{dishView.dishes}" id="dishTable">
+                    <p:column style="width: 12px; text-align: center" headerText="Nummer">
+                        <h:outputText value="#{dish.id}" />
+                    </p:column>
+
+                    <p:column style="width: 32px; text-align: center" headerText="Name">
+                        <h:outputText value="#{dish.name}" />
+                    </p:column>
+
+                    <p:column style="width: 32px; text-align: center" headerText="Preis">
+                        <h:outputText value="#{dish.price}" />
+                    </p:column>
+
+                    <p:column style="width: 32px; text-align: center" headerText="Kategorie">
+                        <h:outputText value="#{dish.category.toString()}" />
+                    </p:column>
+
+                    <p:column style="width:32px;text-align: center">
+                        <h:commandButton action="#{dishView.deleteDish(dish.id)}" value="Loeschen">
+                            <f:ajax render="dishTable"/>
+                        </h:commandButton>
+
+                        <h:commandButton action="dishInfo" value="Aendern">
+                            <f:param name="dishId" value="#{dish.id}"/>
+                        </h:commandButton>
+                    </p:column>
+                </p:dataTable>
+
+                <h:commandButton action="dishInfo" value="Gericht anlegen"/>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

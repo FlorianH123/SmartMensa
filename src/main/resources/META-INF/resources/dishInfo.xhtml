@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+
+    </h:head>
+
+    <h:body>
+        <h1>Gericht erstellen oder aendern</h1>
+
+        <h:form>
+            <p:panelGrid columns="3">
+                <h:outputLabel>Name</h:outputLabel>
+                <p:inputText value="#{addOrChangeDishView.dish.name}"
+                             id="txtDishName"
+                             required="true"
+                             requiredMessage="Einen Namen braucht das Essen schon!"
+                             validator="#{addOrChangeDishView.validateDishName}"/>
+                <h:message for="txtDishName" errorStyle="color:red"/>
+
+                <h:outputLabel>Preis</h:outputLabel>
+                <p:inputText value="#{addOrChangeDishView.dish.price}"
+                             id="txtDishPrice"
+                             required="true"
+                             requiredMessage="Ein Essen kostet hier zwischen 50 Cent und 5,50 Euro"
+                             validator="#{addOrChangeDishView.validateDishPrice}"/>
+                <h:message for="txtDishPrice" errorStyle="color:red"/>
+
+                <h:outputLabel>Kategorie</h:outputLabel>
+                <h:selectOneListbox value="#{addOrChangeDishView.dish.category}">
+                    <f:selectItems value="#{addOrChangeDishView.categories}" var="category"
+                                   itemValue="#{category}" itemLabel="#{category.toString()}" />
+                </h:selectOneListbox>
+
+                <h:outputLabel/>
+
+                <h:commandButton action="#{addOrChangeDishView.saveDish(addOrChangeDishView.dish)}" value="Speichern"/>
+                <h:commandButton action="administration" value="Abbrechen" immediate="true"/>
+            </p:panelGrid>
+
+            <h:messages globalOnly="true"/>
+        </h:form>
+    </h:body>
+</html>
