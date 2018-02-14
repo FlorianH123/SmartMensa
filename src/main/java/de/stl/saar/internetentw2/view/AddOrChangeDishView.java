@@ -39,6 +39,7 @@ public class AddOrChangeDishView implements Serializable{
 
     public String saveDish(Dish dish) {
         dishService.saveDish(dish);
+
         return "administration";
     }
 
@@ -61,7 +62,8 @@ public class AddOrChangeDishView implements Serializable{
         String dishName = (String) value;
 
         if (dishName.trim().isEmpty()) {
-            throw new ValidatorException(new FacesMessage(ErrorMessages.INVALID_DISH_NAME));
+            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    ErrorMessages.ERROR, ErrorMessages.INVALID_DISH_NAME));
         }
     }
 
@@ -72,8 +74,7 @@ public class AddOrChangeDishView implements Serializable{
         double price = (Double) value;
 
         if (price < 0.5 || price > 5.5) {
-            //facesContext.addMessage("txtDishName", new FacesMessage(ErrorMessages.INVALID_DISH_PRICE));
-            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, ErrorMessages.INVALID_DISH_PRICE,
+            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, ErrorMessages.ERROR,
                     ErrorMessages.INVALID_DISH_PRICE));
         }
     }

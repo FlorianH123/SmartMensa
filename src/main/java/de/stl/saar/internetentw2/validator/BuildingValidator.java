@@ -14,24 +14,30 @@ import javax.faces.validator.ValidatorException;
 public class BuildingValidator implements Validator{
     @Override
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object o) throws ValidatorException {
-        String message;
+        StringBuilder sb = new StringBuilder();
+        boolean validationFailure = false;
 
         if (o instanceof Building) {
             Building building = (Building) o;
 
             if (!checkBuildingNumber(building.getBuildingNumber())) {
-                message = ErrorMessages.INVALID_BUILDING_NUMBER;
-                throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message));
+                sb.append(ErrorMessages.INVALID_BUILDING_NUMBER + " ");
+                validationFailure = true;
             }
 
             if (!checkFloorNumber(building.getFloorNumber())) {
-                message = ErrorMessages.INVALID_FLOOR_NUMBER;
-                throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message));
+                sb.append(ErrorMessages.INVALID_FLOOR_NUMBER + " ");
+                validationFailure = true;
             }
 
             if (!checkRoomNumber(building.getRoomNumber())) {
-                message = ErrorMessages.INVALID_ROOM_NUMBER;
-                throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message));
+                sb.append(ErrorMessages.INVALID_ROOM_NUMBER + " ");
+                validationFailure = true;
+            }
+
+            if (validationFailure) {
+                throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                        ErrorMessages.ERROR, sb.toString()));
             }
         }
     }

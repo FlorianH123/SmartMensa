@@ -52,4 +52,21 @@ public class Building {
 
         return Objects.hash(buildingNumber, floorNumber, roomNumber);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(buildingNumber);
+        sb.append(floorNumber);
+
+        if (roomNumber < 10) {
+            sb.append("0");
+            sb.append(roomNumber);
+        } else {
+            sb.append(roomNumber);
+        }
+
+        return sb.toString();
+    }
 }

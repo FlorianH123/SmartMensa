@@ -11,28 +11,21 @@
         <h1>Gericht erstellen oder aendern</h1>
 
         <h:form>
-            <p:panelGrid columns="3">
+            <p:panelGrid columns="2">
                 <h:outputLabel>Name</h:outputLabel>
                 <p:inputText value="#{addOrChangeDishView.dish.name}"
                              id="txtDishName"
                              required="true"
-                             requiredMessage="Einen Namen braucht das Essen schon!"
+                             requiredMessage="#{errorMessages.invalidDishName}"
                              validator="#{addOrChangeDishView.validateDishName}"/>
-                <h:message for="txtDishName" errorStyle="color:red"
-                           fatalStyle="color:red"
-                           infoStyle="color:red"
-                           warnStyle="color:red"/>
 
                 <h:outputLabel>Preis</h:outputLabel>
                 <p:inputText value="#{addOrChangeDishView.dish.price}"
                              id="txtDishPrice"
                              required="true"
-                             requiredMessage="Ein Essen kostet hier zwischen 50 Cent und 5,50 Euro"
+                             requiredMessage="#{errorMessages.invalidDishPrice}"
                              validator="#{addOrChangeDishView.validateDishPrice}"/>
-                <h:message for="txtDishPrice" errorStyle="color:red"
-                           fatalStyle="color:red"
-                           infoStyle="color:red"
-                           warnStyle="color:red"/>
+
 
                 <h:outputLabel>Kategorie</h:outputLabel>
                 <h:selectOneListbox value="#{addOrChangeDishView.dish.category}">
@@ -40,13 +33,11 @@
                                    itemValue="#{category}" itemLabel="#{category.toString()}" />
                 </h:selectOneListbox>
 
-                <h:outputLabel/>
-
                 <h:commandButton action="#{addOrChangeDishView.saveDish(addOrChangeDishView.dish)}" value="Speichern"/>
                 <h:commandButton action="administration" value="Abbrechen" immediate="true"/>
             </p:panelGrid>
 
-            <h:messages globalOnly="true"/>
+            <p:growl id="growl" showDetail="true" sticky="true" />
         </h:form>
     </h:body>
 </html>

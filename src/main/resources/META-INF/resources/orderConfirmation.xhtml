@@ -11,23 +11,22 @@
         <h1>Lieferdaten</h1>
 
         <h:outputLabel>Raumnummer</h:outputLabel>
-        <p:inputText>
+        <p:inputText id="txtRoomNumber" value="#{orderConfirmationView.building}">
             <f:validator validatorId="buildingValidator"/>
         </p:inputText>
 
         <br/>
 
         <h:outputLabel>Ihr Name</h:outputLabel>
-        <p:inputText required="true">
+        <p:inputText required="true" value="#{orderConfirmationView.name}">
         </p:inputText>
 
         <br/>
 
-        <p:commandButton value="Bestellen">
-        </p:commandButton>
+        <h:commandButton value="Bestellen" action="#{orderConfirmationView.confirmOrder}"/>
+        <h:commandButton action="order" value="Zurueck" immediate="true"/>
 
-        <p:commandButton value="Zurueck" immediate="true">
-        </p:commandButton>
+        <p:growl id="growl" showDetail="true" sticky="true" />
     </h:form>
 </h:body>
 </html>

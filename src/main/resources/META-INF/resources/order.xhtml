@@ -52,7 +52,9 @@
         </p:column>
     </p:dataTable>
 
-    <h:outputText value="Gesamtpreis: #{orderView.totalCosts}€" id="totalCostsLable"/>
+    <h:outputText value="Gesamtpreis: #{orderView.totalCosts}€" id="totalCostsLable">
+        <f:convertNumber maxFractionDigits="2" type="number"/>
+    </h:outputText>
 
 </h:body>
 </html>
