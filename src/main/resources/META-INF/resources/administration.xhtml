@@ -1,8 +1,8 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head/>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Administration</title>
+    </h:head>
 
     <h:body>
         <f:view>
@@ -28,13 +28,13 @@
                         <h:commandButton action="#{dishView.deleteDish(dish.id)}" value="Loeschen">
                             <f:ajax render="dishTable"/>
                         </h:commandButton>
-
+                        <br/>
                         <h:commandButton action="dishInfo" value="Aendern">
                             <f:param name="dishId" value="#{dish.id}"/>
                         </h:commandButton>
                     </p:column>
                 </p:dataTable>
-
+                <br/>
                 <h:commandButton action="dishInfo" value="Gericht anlegen"/>
             </h:form>
         </f:view>

@@ -1,60 +1,61 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-<h:head>
-</h:head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Bestellen</title>
+    </h:head>
 
-<h:body>
-    <h:form>
-        <p:dataTable var="dish" value="#{dishView.dishes}">
-            <p:column style="width: 10px; text-align: center" headerText="Nummer">
-                <h:outputText value="#{dish.id}"/>
-            </p:column>
+    <h:body>
+        <h:form>
+            <p:dataTable var="dish" value="#{dishView.dishes}">
+                <p:column style="width: 10px; text-align: center" headerText="Nummer">
+                    <h:outputText value="#{dish.id}"/>
+                </p:column>
 
-            <p:column style="width: 20px; text-align: center" headerText="Name">
-                <h:outputText value="#{dish.name}"/>
-            </p:column>
+                <p:column style="width: 20px; text-align: center" headerText="Name">
+                    <h:outputText value="#{dish.name}"/>
+                </p:column>
 
-            <p:column style="width: 20px; text-align: center" headerText="Preis">
-                <h:outputText value="#{dish.price}"/>
+                <p:column style="width: 20px; text-align: center" headerText="Preis">
+                    <h:outputText value="#{dish.price}"/>
+                </p:column>
+
+                <p:column style="width: 20px; text-align: center">
+                    <img src="images/#{dish.imageName}.jpg" height="80px" width="150px"/>
+                </p:column>
+
+                <p:column style="width: 20px; text-align: center">
+                    <h:commandButton action="#{orderView.addDishToShoppingCard(dish)}" value="In den Warenkorb">
+                        <f:ajax render="shoppingCardTable totalCostsLable"/>
+                    </h:commandButton>
+                </p:column>
+            </p:dataTable>
+
+            <br/>
+            <h:commandButton action="orderConfirmation" value="Bestellen" />
+        </h:form>
+
+        <h1>Ihr Einkaufswagen</h1>
+
+        <p:dataTable var="shoppingCardDish" value="#{orderView.shoppingCard}" id="shoppingCardTable">
+            <p:column style="width: 20px; text-align: center">
+                <h:outputText value="#{shoppingCardDish.name}"/>
             </p:column>
 
             <p:column style="width: 20px; text-align: center">
-                <img src="images/#{dish.imageName}.jpg" height="80px" width="150px"/>
+                <h:outputText value="#{shoppingCardDish.price}"/>
             </p:column>
 
             <p:column style="width: 20px; text-align: center">
-                <h:commandButton action="#{orderView.addDishToShoppingCard(dish)}" value="In den Warenkorb">
+                <h:commandButton value="Entfernen" action="#{orderView.removeDishFromShoppingCard(shoppingCardDish)}">
                     <f:ajax render="shoppingCardTable totalCostsLable"/>
                 </h:commandButton>
             </p:column>
         </p:dataTable>
 
-        <h:commandButton action="orderConfirmation" value="Bestellen" />
-    </h:form>
+        <br/>
 
-    <h1>Ihr Einkaufswagen</h1>
-
-    <p:dataTable var="shoppingCardDish" value="#{orderView.shoppingCard}" id="shoppingCardTable">
-        <p:column style="width: 20px; text-align: center">
-            <h:outputText value="#{shoppingCardDish.name}"/>
-        </p:column>
-
-        <p:column style="width: 20px; text-align: center">
-            <h:outputText value="#{shoppingCardDish.price}"/>
-        </p:column>
-
-        <p:column style="width: 20px; text-align: center">
-            <h:commandButton value="Entfernen" action="#{orderView.removeDishFromShoppingCard(shoppingCardDish)}">
-                <f:ajax render="shoppingCardTable totalCostsLable"/>
-            </h:commandButton>
-        </p:column>
-    </p:dataTable>
-
-    <h:outputText value="Gesamtpreis: #{orderView.totalCosts}€" id="totalCostsLable">
-        <f:convertNumber maxFractionDigits="2" type="number"/>
-    </h:outputText>
-
-</h:body>
+        <h:outputText value="Gesamtpreis: #{orderView.totalCosts}€" id="totalCostsLable">
+            <f:convertNumber maxFractionDigits="2" type="number"/>
+        </h:outputText>
+    </h:body>
 </html>

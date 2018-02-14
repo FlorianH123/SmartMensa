@@ -52,32 +52,4 @@ public class AddOrChangeDishView implements Serializable{
     public Category[] getCategories() {
         return Category.values();
     }
-
-// Validation ----------------------------------------------------------------------------------------------------------
-
-    public void validateDishName(FacesContext facesContext,
-                                 UIComponent component,
-                                 Object value) throws ValidatorException {
-
-        String dishName = (String) value;
-
-        if (dishName.trim().isEmpty()) {
-            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                    ErrorMessages.ERROR, ErrorMessages.INVALID_DISH_NAME));
-        }
-    }
-
-    public void validateDishPrice(FacesContext facesContext,
-                                  UIComponent component,
-                                  Object value) throws ValidatorException {
-
-        double price = (Double) value;
-
-        if (price < 0.5 || price > 5.5) {
-            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, ErrorMessages.ERROR,
-                    ErrorMessages.INVALID_DISH_PRICE));
-        }
-    }
-
-// ---------------------------------------------------------------------------------------------------------------------
 }

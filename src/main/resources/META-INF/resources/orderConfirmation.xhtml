@@ -1,32 +1,50 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-<h:head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
 
-</h:head>
+    <h:head>
+        <title>Bestellbestätigung</title>
+    </h:head>
 
-<h:body>
-    <h:form>
-        <h1>Lieferdaten</h1>
+    <h:body>
+        <h:form>
+            <h1>Lieferdaten</h1>
 
-        <h:outputLabel>Raumnummer</h:outputLabel>
-        <p:inputText id="txtRoomNumber" value="#{orderConfirmationView.building}">
-            <f:validator validatorId="buildingValidator"/>
-        </p:inputText>
+            <table>
+                <tr>
+                    <td>
+                        <h:outputLabel>Raumnummer</h:outputLabel>
+                    </td>
 
-        <br/>
+                    <td>
+                        <h:inputText id="txtRoomNumber" value="#{orderConfirmationView.building}">
+                            <f:validator validatorId="buildingValidator"/>
+                        </h:inputText>
+                    </td>
+                </tr>
 
-        <h:outputLabel>Ihr Name</h:outputLabel>
-        <p:inputText required="true" value="#{orderConfirmationView.name}">
-        </p:inputText>
+                <tr>
+                    <td>
+                        <h:outputLabel>Ihr Name</h:outputLabel>
+                    </td>
 
-        <br/>
+                    <td>
+                        <h:inputText required="true" requiredMessage="#{errorMessages.invalidName}"
+                                     value="#{orderConfirmationView.name}"/>
+                    </td>
+                </tr>
 
-        <h:commandButton value="Bestellen" action="#{orderConfirmationView.confirmOrder}"/>
-        <h:commandButton action="order" value="Zurueck" immediate="true"/>
+                <tr>
+                    <td>
+                        <h:commandButton value="Bestellen" action="#{orderConfirmationView.confirmOrder}"/>
+                    </td>
 
-        <p:growl id="growl" showDetail="true" sticky="true" />
-    </h:form>
-</h:body>
+                    <td>
+                        <h:commandButton action="order" value="Zurueck" immediate="true"/>
+                    </td>
+                </tr>
+            </table>
+
+            <p:growl id="growl" showDetail="true" sticky="false" />
+        </h:form>
+    </h:body>
 </html>
