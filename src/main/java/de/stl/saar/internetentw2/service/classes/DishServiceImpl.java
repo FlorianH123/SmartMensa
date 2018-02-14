@@ -42,7 +42,7 @@ public class DishServiceImpl implements DishService {
 
 	@Override
 	public List<Dish> getAllDishes() {
-		ArrayList<Dish> dishes = new ArrayList<Dish>();
+		ArrayList<Dish> dishes = new ArrayList<>();
 
 		for (DishEntity dishEntity : dishRepository.findAll()) {
 			Dish dish = createDish(dishEntity);
@@ -71,7 +71,7 @@ public class DishServiceImpl implements DishService {
 	}
 
 	private List<Dish> createDishes(List<DishEntity> dishEntities) {
-		List<Dish> dishes = new ArrayList<Dish>();
+		List<Dish> dishes = new ArrayList<>();
 
 		for (DishEntity dishEntity: dishEntities) {
 			Dish dish = createDish(dishEntity);

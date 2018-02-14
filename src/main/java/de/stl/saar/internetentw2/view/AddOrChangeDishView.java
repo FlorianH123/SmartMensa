@@ -1,6 +1,5 @@
 package de.stl.saar.internetentw2.view;
 
-import de.stl.saar.internetentw2.constants.ErrorMessages;
 import de.stl.saar.internetentw2.model.Category;
 import de.stl.saar.internetentw2.model.Dish;
 import de.stl.saar.internetentw2.service.interfaces.DishService;
@@ -8,11 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
-import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
 import java.io.Serializable;
 
 @ManagedBean

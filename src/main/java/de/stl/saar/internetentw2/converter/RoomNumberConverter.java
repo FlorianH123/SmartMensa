@@ -9,8 +9,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
-import javax.faces.validator.ValidatorException;
-import java.io.BufferedReader;
 
 @FacesConverter(forClass = Building.class)
 public class RoomNumberConverter implements Converter {

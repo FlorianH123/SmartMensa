@@ -3,12 +3,10 @@ package de.stl.saar.internetentw2.view;
 import de.stl.saar.internetentw2.model.Dish;
 import de.stl.saar.internetentw2.service.interfaces.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.annotation.ApplicationScope;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
 import java.util.List;
