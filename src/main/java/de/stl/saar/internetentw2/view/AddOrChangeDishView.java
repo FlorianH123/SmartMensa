@@ -72,7 +72,9 @@ public class AddOrChangeDishView implements Serializable{
         double price = (Double) value;
 
         if (price < 0.5 || price > 5.5) {
-            throw new ValidatorException(new FacesMessage(ErrorMessages.INVALID_DISH_PRICE));
+            //facesContext.addMessage("txtDishName", new FacesMessage(ErrorMessages.INVALID_DISH_PRICE));
+            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, ErrorMessages.INVALID_DISH_PRICE,
+                    ErrorMessages.INVALID_DISH_PRICE));
         }
     }
 

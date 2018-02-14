@@ -18,7 +18,10 @@
                              required="true"
                              requiredMessage="Einen Namen braucht das Essen schon!"
                              validator="#{addOrChangeDishView.validateDishName}"/>
-                <h:message for="txtDishName" errorStyle="color:red"/>
+                <h:message for="txtDishName" errorStyle="color:red"
+                           fatalStyle="color:red"
+                           infoStyle="color:red"
+                           warnStyle="color:red"/>
 
                 <h:outputLabel>Preis</h:outputLabel>
                 <p:inputText value="#{addOrChangeDishView.dish.price}"
@@ -26,7 +29,10 @@
                              required="true"
                              requiredMessage="Ein Essen kostet hier zwischen 50 Cent und 5,50 Euro"
                              validator="#{addOrChangeDishView.validateDishPrice}"/>
-                <h:message for="txtDishPrice" errorStyle="color:red"/>
+                <h:message for="txtDishPrice" errorStyle="color:red"
+                           fatalStyle="color:red"
+                           infoStyle="color:red"
+                           warnStyle="color:red"/>
 
                 <h:outputLabel>Kategorie</h:outputLabel>
                 <h:selectOneListbox value="#{addOrChangeDishView.dish.category}">
